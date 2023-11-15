@@ -3,6 +3,8 @@ package com.github.projet.restauration.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -21,6 +23,11 @@ public class Utilisateur {
     private String password;
     @Column(nullable =false)
     private String role;
+    @ManyToMany
+    @JoinTable(name= "emp_reservation",
+            joinColumns = @JoinColumn(name = "emp_id"),
+            inverseJoinColumns = @JoinColumn(name = "reservation_id"))
+    private Set<Reservation> reserve;
 
 
 

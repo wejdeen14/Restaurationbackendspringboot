@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -20,6 +22,9 @@ public class Reservation {
     private Date date;
     @Column(nullable =false)
     private int nb_personne;
+
+    @ManyToMany(mappedBy = "reserved")
+    private Set<Utilisateur> utilisateurs;
 
 
 }
