@@ -3,6 +3,8 @@ package com.github.projet.restauration.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -19,8 +21,10 @@ public class Restaurant {
     private String ville;
     @Column(nullable =false)
     private String photo;
-    @Column(nullable =false)
-    private String menu;
-
-
+    //menu
+    @OneToMany(mappedBy = "restaurant")
+    private Set<Menu> Menus;
+    //restaurateur
+    @ManyToOne
+    private Utilisateur utilisateur;
 }

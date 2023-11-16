@@ -23,12 +23,16 @@ public class Utilisateur {
     private String password;
     @Column(nullable =false)
     private String role;
-    @ManyToMany
-    @JoinTable(name= "emp_reservation",
-            joinColumns = @JoinColumn(name = "emp_id"),
-            inverseJoinColumns = @JoinColumn(name = "reservation_id"))
-    private Set<Reservation> reserve;
-
-
-
+    //restaurant
+    @OneToMany(mappedBy = "utilisateur")
+    private Set<Restaurant> restaurants;
+    //reservation
+    @OneToMany(mappedBy = "restaurateur")
+    private Set<Reservation> reservations;
+    //reservation
+    @OneToMany(mappedBy = "client")
+    private Set<Reservation> resarvations;
+    //commentaire
+    @OneToMany(mappedBy = "auteur")
+    private Set<Commantaire> commantaires;
 }

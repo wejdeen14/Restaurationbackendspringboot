@@ -15,16 +15,18 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(nullable =false)
-    private String client;
-    @Column(nullable =false)
     private String restaurant;
     @Column(nullable =false)
     private Date date;
     @Column(nullable =false)
     private int nb_personne;
+    //restaurateur
+    @ManyToOne
+    private Utilisateur restaurateur;
+    //client
+    @ManyToOne
+    private Utilisateur client;
 
-    @ManyToMany(mappedBy = "reserved")
-    private Set<Utilisateur> utilisateurs;
 
 
 }
