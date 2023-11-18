@@ -1,10 +1,16 @@
 package com.github.projet.restauration.Entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.Date;
-import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -13,7 +19,7 @@ import java.util.Set;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column(nullable =false)
     private String restaurant;
     @Column(nullable =false)
@@ -26,6 +32,8 @@ public class Reservation {
     //client
     @ManyToOne
     private Utilisateur client;
+
+
 
 
 
